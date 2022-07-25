@@ -7,6 +7,13 @@
     "preview": "nuxt preview"
   },
   "devDependencies": {
-    "nuxt": "3.0.0-rc.6"
+    "nuxt": "3.0.0-rc.6",
+    "vuetify": "3.0.0-beta.5"
+  },
+  "dependencies": {
+    "@mdi/font": "^7.0.96",
+    "mdi": "^2.2.43",
+    "sass": "^1.54.0",
+    "vue": "^3.2.37"
   }
 }
