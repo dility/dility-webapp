@@ -7,12 +7,14 @@
       :meta="meta"
     ></example-component>
   </q-page>
+  <div>{{ $t("hi") }}</div>
 </template>
 
 <script setup lang="ts">
 import { Todo, Meta } from 'components/models';
 import ExampleComponent from 'components/ExampleComponent.vue';
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n'
 
 const todos = ref<Todo[]>([
   {
