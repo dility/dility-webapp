@@ -8,5 +8,3 @@ vue-frontend
 
 - email sender's identity
 - web-api to send SMTP email
-
-
