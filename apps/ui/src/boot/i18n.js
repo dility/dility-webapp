@@ -6,7 +6,7 @@ export default ({ app }) => {
   const i18n = createI18n({
     locale: 'en-US',
     globalInjection: true,
-    messages
+    messages,
   })
 
   // Tell app to use the I18n instance
