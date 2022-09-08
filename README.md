@@ -8,3 +8,10 @@ vue-frontend
 
 - email sender's identity
 - web-api to send SMTP email
+
+## Run
+
+
+```
+pnpm --filter ui run dev
+```
