@@ -12,14 +12,16 @@
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
+        <q-item-label header>--workshop switcher radio here--</q-item-label>
         <q-item-label header> Application Links </q-item-label>
-
         <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
       </q-list>
     </q-drawer>
 
     <q-page-container>
-      <router-view />
+      <q-page class="q-px-md">
+        <router-view />
+      </q-page>
     </q-page-container>
   </q-layout>
 </template>
@@ -55,18 +57,18 @@ const essentialLinks: EssentialLinkProps[] = [
   //   icon: 'record_voice_over',
   //   link: 'https://forum.quasar.dev'
   // },
-  // {
-  //   title: 'Twitter',
-  //   caption: '@quasarframework',
-  //   icon: 'rss_feed',
-  //   link: 'https://twitter.quasar.dev'
-  // },
-  // {
-  //   title: 'Facebook',
-  //   caption: '@QuasarFramework',
-  //   icon: 'public',
-  //   link: 'https://facebook.quasar.dev'
-  // },
+  {
+    title: 'Twitter',
+    caption: 'dility/twitter',
+    icon: 'rss_feed',
+    link: 'https://twitter.quasar.dev'
+  },
+  {
+    title: 'Facebook',
+    caption: 'dility/facebook',
+    icon: 'public',
+    link: 'https://facebook.quasar.dev'
+  },
   // {
   //   title: 'Quasar Awesome',
   //   caption: 'Community Quasar projects',
