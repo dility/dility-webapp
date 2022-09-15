@@ -1,5 +1,5 @@
 <template>
-  <q-item clickable tag="a" target="_blank" :href="link">
+  <q-item clickable tag="a" :target="(isExternal) ? `_blank` : ``" :to="link">
     <q-item-section v-if="icon" avatar>
       <q-icon :name="icon" />
     </q-item-section>
@@ -17,10 +17,13 @@ export interface EssentialLinkProps {
   caption?: string
   link?: string
   icon?: string
+  isExternal?: boolean
 }
+
 withDefaults(defineProps<EssentialLinkProps>(), {
   caption: '',
   link: '#',
   icon: '',
+  isExternal: false,
 })
 </script>
