@@ -3,18 +3,27 @@
     <q-header elevated>
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
-
         <q-toolbar-title>{{ APP_NAME }}</q-toolbar-title>
-
         <div>dev v0.0.1</div>
       </q-toolbar>
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
+        <q-item class="justify-around">
+          <q-icon name="img:/assets/dility_logo_text_pink.svg" size="8em"/>
+        </q-item>
+        
         <q-item-label header>--workshop switcher radio here--</q-item-label>
-        <q-item-label header> Application Links </q-item-label>
+        <q-separator />
+        <q-item-label header>Primary menu </q-item-label>
         <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
+        
+        <div class="bottom">
+          <q-item-label header>Secondary menu </q-item-label>
+          <EssentialLink v-for="link in secondaryLinks" :key="link.title" v-bind="link" />
+        </div>
+        
       </q-list>
     </q-drawer>
 
@@ -45,36 +54,37 @@ const essentialLinks: EssentialLinkProps[] = [
     link: '/workshop',
     // isExternal: true
   },
-  // {
-  //   title: 'Discord Chat Channel',
-  //   caption: 'chat.quasar.dev',
-  //   icon: 'chat',
-  //   link: 'https://chat.quasar.dev'
-  // },
-  // {
-  //   title: 'Forum',
-  //   caption: 'forum.quasar.dev',
-  //   icon: 'record_voice_over',
-  //   link: 'https://forum.quasar.dev'
-  // },
+]
+
+const secondaryLinks: EssentialLinkProps[] = [
   {
-    title: 'Twitter',
+    icon: 'settings',
+    title: 'Settings',
+    caption: 'Settings',
+    link: '/'
+    // separator: false
+  },
+  {
+    title: 'Integration',
     caption: 'dility/twitter',
     icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    link: '/'
   },
   {
-    title: 'Facebook',
-    caption: 'dility/facebook',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
+    icon: 'feedback',
+    title: 'Send Feedback',
+    caption: 'Send Feedback',
+    link: '/'
+    // separator: false
   },
-  // {
-  //   title: 'Quasar Awesome',
-  //   caption: 'Community Quasar projects',
-  //   icon: 'favorite',
-  //   link: 'https://awesome.quasar.dev'
-  // }
+  {
+    icon: 'help',
+    // iconColor: 'primary',
+    title: 'Help',
+    caption: 'Help',
+    link: '#'
+    // separator: false
+  }
 ]
 
 const leftDrawerOpen = ref(false)
@@ -83,3 +93,9 @@ function toggleLeftDrawer() {
   leftDrawerOpen.value = !leftDrawerOpen.value
 }
 </script>
+
+<style scoped lang="sass">
+.bottom
+  position: fixed
+  bottom: 0
+</style>
