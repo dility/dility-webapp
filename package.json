@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "ui": "pnpm --filter ui run dev",
+    "commit": "git commit --file=COMMIT_MSG.md",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
