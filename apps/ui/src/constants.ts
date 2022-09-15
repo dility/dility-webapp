@@ -1,1 +1,1 @@
-export const APP_NAME = `dility.io`
+export const APP_NAME = 'dility.io'
