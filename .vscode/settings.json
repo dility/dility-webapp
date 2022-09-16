@@ -2,6 +2,7 @@
     "conventionalCommits.scopes": [
         "core",
         "menu",
-        "lint"
+        "lint",
+        "container"
     ]
 }
