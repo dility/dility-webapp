@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "dev": "quasar dev",
-    "serve": "quasar build && python3 -m http.server --directory dist/spa 8080",
+    "prod": "quasar build && python3 -m http.server --directory dist/spa 8080",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "ci:build": "docker build -t dility/ui .",
     "ci:serve": "pnpm run ci:build && docker run -it --rm -p 9000:9000 dility/ui",
