@@ -2,17 +2,18 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: docker build --file apps/ui/Dockerfile --tag dility/ui:$(date +%s) apps/ui
+    - name: Build and push the Docker image
+      run: |
+        echo "${{ secrets.AVI_GITHUB_PAT }}" | docker login ghcr.io -u avimehenwal --password-stdin
+        docker build --file apps/ui/Dockerfile --tag ghcr.io/dility/ui apps/ui      
+        docker push ghcr.io/dility/ui
