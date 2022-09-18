@@ -16,8 +16,8 @@ jobs:
       run: |
         docker build --file apps/ui/Dockerfile --tag ghcr.io/dility/ui:${{ github.sha }} apps/ui      
     
-    - name: Push docker image on ghcr container registry
+    - name: Login & Push docker image on ghcr container registry
       run: |
-        echo "${{ secrets.AVI_GITHUB_PAT }}" | docker login ghcr.io -u avimehenwal --password-stdin
+        echo "${{ secrets.AVI_GITHUB_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
         docker push ghcr.io/dility/ui:${{ github.sha }}
 

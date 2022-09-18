@@ -23,6 +23,7 @@ RUN pnpm exec quasar build
 # FROM nginx:1.17.5-alpine as production-stage
 # COPY --from=build-stage /app/dist/spa /usr/share/nginx/html
 
+# web server to serve webapp
 FROM python:3.9
 COPY --from=builder /app/dist/spa /app
 WORKDIR /app
