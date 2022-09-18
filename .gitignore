@@ -1,3 +1,6 @@
 **/node_modules
 **/.env*
 COMMIT_MSG.md
+
+# vs-code devcontainer
+.pnpm-store
