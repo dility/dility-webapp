@@ -1,6 +1,21 @@
 # dility frontend application
 
-dility.io frontend webapplication
+> dility.io frontend webapplication
+
+## Participant Handling / Management
+
+- ability to send emails
+
+- email sender's identity
+- web-api to send SMTP email
+
+## Run
+
+
+```
+pnpm --filter ui run dev
+```
+
 
 ## Independent deployment of frontend
 

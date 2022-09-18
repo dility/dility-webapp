@@ -1,17 +1,3 @@
 # dility-webapp
 
-vue-frontend
-
-## Participant Handling / Management
-
-- ability to send emails
-
-- email sender's identity
-- web-api to send SMTP email
-
-## Run
-
-
-```
-pnpm --filter ui run dev
-```
+[![Docker Image CI](https://github.com/dility/dility-webapp/actions/workflows/docker-image.yml/badge.svg)](https://github.com/dility/dility-webapp/actions/workflows/docker-image.yml)
