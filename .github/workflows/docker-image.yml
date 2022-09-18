@@ -12,8 +12,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Build and push the Docker image
+    - name: Build Docker image
+      run: |
+        docker build --file apps/ui/Dockerfile --tag ghcr.io/dility/ui:${{ github.sha }} apps/ui      
+    
+    - name: Push docker image on ghcr container registry
       run: |
         echo "${{ secrets.AVI_GITHUB_PAT }}" | docker login ghcr.io -u avimehenwal --password-stdin
-        docker build --file apps/ui/Dockerfile --tag ghcr.io/dility/ui apps/ui      
-        docker push ghcr.io/dility/ui
+        docker push ghcr.io/dility/ui:${{ github.sha }}
+
