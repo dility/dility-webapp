@@ -4,6 +4,7 @@ RUN corepack enable
 # RUN corepack prepare pnpm@latest --activate
 RUN corepack prepare pnpm@7.11.0 --activate
 # RUN pnpm setup
+RUN npm --global install @quasar/cli
 
 WORKDIR /app
 # Files required by pnpm install
@@ -13,9 +14,8 @@ COPY package.json ./
 
 # build stage
 # FROM develop-stage as build-stage
-COPY . .
 RUN pnpm install
-RUN pnpm add -D @quasar/cli
+COPY . .
 # RUN pnpm exec quasar --help
 RUN pnpm exec quasar build
 
@@ -24,7 +24,7 @@ RUN pnpm exec quasar build
 # COPY --from=build-stage /app/dist/spa /usr/share/nginx/html
 
 # web server to serve webapp
-FROM python:3.9
+FROM python:3.9-slim
 COPY --from=builder /app/dist/spa /app
 WORKDIR /app
 EXPOSE 9000
