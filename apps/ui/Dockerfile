@@ -24,10 +24,17 @@ RUN pnpm exec quasar build
 # COPY --from=build-stage /app/dist/spa /usr/share/nginx/html
 
 # web server to serve webapp
-FROM python:3.9-slim
-COPY --from=builder /app/dist/spa /app
-WORKDIR /app
-EXPOSE 9000
-CMD ["python", "-m", "http.server", "9000"]
-# CMD ["bash"]
-# CMD ["pnpm", "exec", "quasar", "dev"]
+# FROM python:3.9-slim
+# COPY --from=builder /app/dist/spa /app
+# WORKDIR /app
+# EXPOSE 9000
+# CMD ["python", "-m", "http.server", "9000"]
+
+# Install NGINX, remove the default NGINX index.html file, and
+# copy the built static site files to the NGINX html directory.
+FROM nginx:stable-alpine
+RUN mv /usr/share/nginx/html/index.html /usr/share/nginx/html/old-index.html
+COPY --from=builder /app/dist/spa /usr/share/nginx/html/
+
+# Instruct the container to listen for requests on port 80 (HTTP).
+EXPOSE 80

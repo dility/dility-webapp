@@ -10,7 +10,7 @@
     "prod": "quasar build && python3 -m http.server --directory dist/spa 8080",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "ci:build": "docker build -t ghcr.io/dility/ui . && docker scan ghcr.io/dility/ui",
-    "ci:serve": "pnpm run ci:build && docker run -it --rm -p 9000:9000 ghcr.io/dility/ui",
+    "ci:serve": "docker run --rm -it -p 9000:80 ghcr.io/dility/ui",
     "format": "prettier --write \"**/*.{js,ts,vue,,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0"
   },
