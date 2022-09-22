@@ -3,6 +3,7 @@
         "core",
         "menu",
         "lint",
-        "container"
+        "container",
+        "k8"
     ]
 }
