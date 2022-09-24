@@ -5,7 +5,7 @@ importers:
   .:
     specifiers:
       nx: 14.7.5
-      ui: workspace:0.0.1
+      ui: workspace:*
     dependencies:
       ui: link:apps/ui
     devDependencies:
