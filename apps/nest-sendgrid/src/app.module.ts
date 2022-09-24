@@ -2,10 +2,12 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config'; // import this
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { SendgridService } from './sendgrid/sendgrid.service';
+import { MailController } from './mail/mail.controller';
 
 @Module({
   imports: [ConfigModule.forRoot()],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, MailController],
+  providers: [AppService, SendgridService],
 })
 export class AppModule {}
