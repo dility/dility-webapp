@@ -26,17 +26,27 @@
             <div class="row">
               <h4>Participant Handling</h4>
             </div>
-            <div class="row q-col-gutter-xl">
+            <q-form class="row q-col-gutter-xl" @submit.stop="onSubmit">
               <div class="col">
-                <q-input outlined v-model="inputEmailText" label="participant email Id" />
+                <q-input outlined v-model="inputEmailText" label="participant email Id"
+                  :rules="[ (val, rules) => rules.email(val) || 'Please enter a valid email address' ]" />
               </div>
               <div class="col">
-                <q-btn outline size="lg" label="Invite Participant" color="primary" @click="inviteNewParticipant" />
+                <q-btn size="lg" label="Invite Participant" v-model="inputEmailText" type="email" color="primary"
+                  :disabled="(inputEmailText?.length > 2) ? false : true" />
               </div>
-            </div>
+            </q-form>
 
             <div class="q-py-xl">
-              <q-table title="Workshop Attendes List" :rows="rows" :columns="columns" row-key="name" />
+              <q-table title="Workshop Attendes List" :rows="rows" :columns="columns" row-key="name"
+                :pagination="pagination">
+                <template v-slot:body-cell-calories="props">
+                  <q-td :props="props">
+                    <q-icon v-if="props.value" name="done_outline" size="2em" color="positive" />
+                    <q-icon v-else name="dangerous" size="2em"  color="negative"/>
+                  </q-td>
+                </template>
+              </q-table>
             </div>
           </q-tab-panel>
 
@@ -55,10 +65,9 @@ import { ref } from 'vue';
 
 const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 const tab = ref('participants')
-const inputEmailText = ref('')
-
-const inviteNewParticipant = () => {
-  console.log(inputEmailText.value)
+const inputEmailText = ref(null)
+const pagination = {
+  rowsPerPage: 30
 }
 
 const columns = [
@@ -75,7 +84,7 @@ const columns = [
 ]
 
 // TODO: featch from database / backend. Append when new attende is added
-const rows = [
+const rows = ref([
   {
     name: 'john.doe@gmail.com',
     calories: true,
@@ -88,7 +97,18 @@ const rows = [
     name: 'pqr@email.com',
     calories: true,
   },
-]
+])
+
+const onSubmit = () => {
+  console.log(inputEmailText.value)
+  const newEntry = {
+    name: inputEmailText.value,
+    calories: false,
+  }
+  const newRows = rows.value?.push(newEntry)
+  console.dir(newRows)
+}
+
 </script>
 
 <style lang="sass" scoped>
