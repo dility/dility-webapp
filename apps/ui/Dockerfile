@@ -4,7 +4,13 @@ RUN corepack enable
 # RUN corepack prepare pnpm@latest --activate
 RUN corepack prepare pnpm@7.11.0 --activate
 # RUN pnpm setup
-RUN npm --global install @quasar/cli
+# export PNPM
+RUN mkdir /pnpm
+ENV PNPM_HOME="/pnpm/"
+ENV PATH="${PNPM_HOME}/:$PATH"
+RUN pnpm -g install @quasar/cli
+RUN pnpm -g list
+
 
 WORKDIR /app
 # Files required by pnpm install
