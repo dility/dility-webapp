@@ -1,6 +1,6 @@
 <template>
   <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+    <q-header elevated class="bg-blue-6">
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
         <q-toolbar-title>{{ APP_NAME }}</q-toolbar-title>
@@ -13,17 +13,17 @@
         <q-item class="justify-around">
           <q-icon name="img:/assets/dility_logo_text_pink.svg" size="8em"/>
         </q-item>
-        
+
         <q-item-label header>--workshop switcher radio here--</q-item-label>
         <q-separator />
         <q-item-label header>Primary menu </q-item-label>
         <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
-        
+
         <div class="bottom">
           <q-item-label header>Secondary menu </q-item-label>
           <EssentialLink v-for="link in secondaryLinks" :key="link.title" v-bind="link" />
         </div>
-        
+
       </q-list>
     </q-drawer>
 

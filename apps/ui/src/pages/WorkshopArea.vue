@@ -29,7 +29,11 @@
             <q-form class="row q-col-gutter-xl" @submit.stop="onSubmit">
               <div class="col">
                 <q-input outlined v-model="inputEmailText" label="participant email Id"
-                  :rules="[ (val, rules) => rules.email(val) || 'Please enter a valid email address' ]" />
+                  :rules="[ (val, rules) => rules.email(val) || 'Please enter a valid email address' ]">
+                  <template v-slot:append>
+                    <q-icon name="close" @click="inputEmailText = null" class="cursor-pointer" />
+                  </template>
+                </q-input>
               </div>
               <div class="col">
                 <q-btn size="lg" label="Invite Participant" v-model="inputEmailText" type="email" color="primary"
@@ -42,8 +46,13 @@
                 :pagination="pagination">
                 <template v-slot:body-cell-calories="props">
                   <q-td :props="props">
-                    <q-icon v-if="props.value" name="done_outline" size="2em" color="positive" />
-                    <q-icon v-else name="dangerous" size="2em"  color="negative"/>
+                    <q-icon v-if="props.value" name="check_circle" size="2em" color="positive" />
+                    <q-icon v-else name="dangerous" size="2em" color="negative" />
+                  </q-td>
+                </template>
+                <template v-slot:body-cell-remove="props">
+                  <q-td :props="props">
+                    <q-btn round color="negative" size="xs" @click="deleteAttendee(props.key)" icon="delete_outline" />
                   </q-td>
                 </template>
               </q-table>
@@ -62,6 +71,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useQuasar } from 'quasar'
 
 const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 const tab = ref('participants')
@@ -81,6 +91,7 @@ const columns = [
     sortable: true
   },
   { name: 'calories', align: 'center', label: 'invite accepted', field: 'calories', sortable: true },
+  { name: 'remove', align: 'center', label: 'remove', field: 'remove', sortable: true },
 ]
 
 // TODO: featch from database / backend. Append when new attende is added
@@ -88,14 +99,17 @@ const rows = ref([
   {
     name: 'john.doe@gmail.com',
     calories: true,
+    remove: true,
   },
   {
     name: 'abc@xyz.com',
     calories: false,
+    remove: true,
   },
   {
     name: 'pqr@email.com',
     calories: true,
+    remove: true,
   },
 ])
 
@@ -108,6 +122,22 @@ const onSubmit = () => {
   const newRows = rows.value?.push(newEntry)
   console.dir(newRows)
 }
+
+const $q = useQuasar()
+
+const deleteAttendee = (key) => {
+  console.dir(key)
+  rows.value.map((item, index) => {
+    (item.name === key) && delete rows.value[index]
+  })
+  $q.notify({
+    message: `Participant with email ${key} is removed !!`,
+    color: 'accent',
+    icon: 'announcement',
+    actions: [{ icon: 'close', color: 'white' }]
+  })
+}
+
 
 </script>
 
