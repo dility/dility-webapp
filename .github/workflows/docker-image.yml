@@ -6,16 +6,19 @@ on:
   pull_request:
     branches: ["main"]
 
+
 jobs:
   build:
+    name: Build
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Build Docker image
       run: |
         docker build --file apps/ui/Dockerfile --tag ghcr.io/${{ github.repository_owner }}/ui:${{ github.run_number }} apps/ui      
-    
+
     - name: Tag image as latest
       run: docker tag ghcr.io/${{ github.repository_owner }}/ui:${{ github.run_number }} ghcr.io/${{ github.repository_owner }}/ui:latest
 
@@ -23,4 +26,8 @@ jobs:
       run: |
         echo "${{ secrets.AVI_GITHUB_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
         docker push ghcr.io/${{ github.repository_owner }}/ui:${{ github.run_number }}
+        docker push ghcr.io/${{ github.repository_owner }}/ui:latest
+
+    - name: Scan docker image
+      run: docker scan ghcr.io/${{ github.repository_owner }}/ui:${{ github.run_number }}
 
