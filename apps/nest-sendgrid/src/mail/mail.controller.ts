@@ -1,25 +1,47 @@
 import { Controller, Post, Query } from '@nestjs/common';
-import { SendgridService } from 'src/sendgrid/sendgrid.service'; // add this
+import { SendgridService } from 'src/sendgrid/sendgrid.service';
 
 @Controller('mail')
 export class MailController {
   constructor(
-    private readonly sendgridService: SendgridService // into this
-  ){}
+    private readonly sendgridService: SendgridService
+  ) { }
 
-   // Here we use query parameter to get the email that we want to send
-   @Post('send-email')
-   async sendEmail(@Query('email') email) {
+  @Post('send-email')
+  async sendEmail(@Query('email') email) {
     const senderIdentity = `avi.mehenwal@dility.io`;
 
-     const mail = {
-       to: email,
-       subject: 'Hello from sendgrid',
-       from: senderIdentity,
-       text: 'Hello',
-       html: '<h1>Hello</h1>',
-     };
- 
-     return await this.sendgridService.send(mail);
-   }
+    const mail = {
+      from: senderIdentity,
+      template_id: "d-9a759651728042f79daaaa74cdeb2a0c",
+      personalizations: [
+        {
+          to: [{ email }],
+          // to: [
+          //   { email: "avi.mehanwal@gmail.com" },
+          //   { email: 'laura.olivarez@dility.io' },
+          //   { email: 'ahmed@dility.io' },
+          // ],
+          dynamic_template_data: {
+            workshop_owner: "Avi Mehenwal",
+            workshop_name: "My-awesome-workshop",
+            workshop_date: "32-August-2022",
+          },
+          content: [
+            {
+              type: "text/html",
+              value: "text/html",
+            },
+          ],
+        },
+      ],
+      // to: email,
+      // subject: 'Hello from sendgrid',
+      // text: 'Hello',
+      // html: '<h1>Hello</h1>',
+    };
+
+    // @ts-ignore
+    return await this.sendgridService.send(mail);
+  }
 }
