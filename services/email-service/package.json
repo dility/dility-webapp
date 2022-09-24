@@ -1,10 +1,10 @@
 {
-  "name": "email-service",
+  "name": "email",
   "version": "1.0.0",
   "description": "dility email service",
   "main": "index.ts",
   "scripts": {
-    "dev": "npx ts-node index.ts",
+    "dev": "pnpm exec ts-node index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -18,6 +18,7 @@
     "dotenv": "^16.0.1"
   },
   "devDependencies": {
+    "@types/node": "^12.20.55",
     "ts-node": "^10.9.1",
     "typescript": "^4.7.4"
   }
