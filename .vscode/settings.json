@@ -4,6 +4,7 @@
         "menu",
         "lint",
         "container",
-        "k8"
+        "k8",
+        "api"
     ]
 }
