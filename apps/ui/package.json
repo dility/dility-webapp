@@ -1,6 +1,6 @@
 {
   "name": "ui",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "dility.io frontend webapplication",
   "productName": "dility frontend application",
   "author": "avi.mehenwal@dility.io",
@@ -42,7 +42,7 @@
         "hidden": false
       },
       {
-        "type": "perf",
+        "type": "ci",
         "hidden": false
       },
       {
