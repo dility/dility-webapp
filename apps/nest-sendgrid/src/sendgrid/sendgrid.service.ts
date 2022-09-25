@@ -10,7 +10,7 @@ export class SendgridService {
 
   async send(mail: SendGrid.MailDataRequired) {
     const transport = await SendGrid.send(mail);
-    console.log(`E-Mail sent to ${mail.personalizations[0].to}`);
+    console.log(`E-Mail sent to ${JSON.stringify(mail.personalizations[0].to)}`);
     return transport;
   }
 }
