@@ -123,11 +123,19 @@ const onSubmit = () => {
   const newRows = rows.value?.push(newEntry)
   console.dir(newRows)
 
-  api.post('/mail/send-email', {}, { params: {
-    email: inputEmailText.value
-  }})
+  api.post('/mail/send-email', {}, {
+    params: {
+      email: inputEmailText.value
+    }
+  })
     .then((response) => {
       console.log(response)
+      $q.notify({
+        message: `Invitation Email sent to participant ${inputEmailText.value}`,
+        color: 'accent',
+        icon: 'announcement',
+        actions: [{ icon: 'close', color: 'white' }]
+      })
     })
     .catch(() => {
       $q.notify({

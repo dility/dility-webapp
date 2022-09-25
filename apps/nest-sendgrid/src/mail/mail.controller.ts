@@ -40,7 +40,7 @@ export class MailController {
       // text: 'Hello',
       // html: '<h1>Hello</h1>',
     };
-
+    console.log(`email request recieved -> ${email}`)
     // @ts-ignore
     return await this.sendgridService.send(mail);
   }

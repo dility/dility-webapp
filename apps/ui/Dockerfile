@@ -44,6 +44,6 @@ RUN pnpm exec quasar build
 FROM nginx:stable-alpine
 RUN mv /usr/share/nginx/html/index.html /usr/share/nginx/html/old-index.html
 COPY --from=builder /app/dist/spa /usr/share/nginx/html/
-
+ENV API=http://localhost:3000/
 # Instruct the container to listen for requests on port 80 (HTTP).
 EXPOSE 80

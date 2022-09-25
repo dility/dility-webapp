@@ -16,13 +16,13 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: ghcr.io/dility/ui:33
+        image: ghcr.io/dility/ui:34
         imagePullPolicy: Always
         ports:
         - containerPort: 80
         env:
         - name: API
-          value: http://139.144.160.153:3000/
+          value: http://localhost:3000/
 ---
 apiVersion: v1
 kind: Service
@@ -63,7 +63,7 @@ spec:
     spec:
       containers:
       - name: api
-        image: ghcr.io/dility/api:33
+        image: ghcr.io/dility/api:34
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
