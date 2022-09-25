@@ -59,12 +59,13 @@
         tempor incididunt ut labore et dolore magna aliqua.
       </q-card-section>
     </q-card>
+  </div>
 
   <h3>API</h3>
+  <div>{{ endpoint }}</div>
   <q-btn label="loadData" @click="loadData" />
   <p>{{ data }}</p>
 
-  </div>
 </template>
 
 <script setup lang="ts">
@@ -78,7 +79,7 @@ const meta = ref<Meta>({
   totalCount: 1200,
 })
 
-// const api = ref(process.env.API)
+const endpoint = ref(process.env.API)
 const $q = useQuasar()
 const data = ref(null)
 

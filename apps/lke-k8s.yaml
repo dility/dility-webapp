@@ -16,10 +16,13 @@ spec:
     spec:
       containers:
       - name: webapp
-        image: ghcr.io/dility/ui:31
+        image: ghcr.io/dility/ui:33
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+        env:
+        - name: API
+          value: http://139.144.160.153:3000/
 ---
 apiVersion: v1
 kind: Service
@@ -40,6 +43,7 @@ spec:
     app: webapp
   sessionAffinity: None
 
+# BACKEND
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -59,10 +63,13 @@ spec:
     spec:
       containers:
       - name: api
-        image: ghcr.io/dility/api:31
+        image: ghcr.io/dility/api:33
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
+        env:
+        - name: SEND_GRID_KEY
+          value: SG.from-kubernetes-file
 ---
 apiVersion: v1
 kind: Service

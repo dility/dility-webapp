@@ -22,7 +22,7 @@ COPY package.json ./
 # FROM develop-stage as build-stage
 RUN pnpm install
 
-ENV API=http://139.144.160.153:3000/
+ENV API=http://localhost:3000/
 
 COPY . .
 # RUN pnpm exec quasar --help
