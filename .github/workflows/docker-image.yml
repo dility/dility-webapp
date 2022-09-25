@@ -6,10 +6,9 @@ on:
   pull_request:
     branches: ["main"]
 
-
 jobs:
-  build-container:
-    name: Build
+  ui-build-container:
+    name: ui-build
     runs-on: ubuntu-latest
 
     steps:
@@ -36,4 +35,34 @@ jobs:
       with:
         image: ghcr.io/${{ github.repository_owner }}/ui:${{ github.run_number }}
         command: monitor
+  
+  api-build-container:
+    name: api-build
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build Docker image
+      run: |
+        docker build --file apps/nest-sendgrid/Dockerfile --tag ghcr.io/${{ github.repository_owner }}/api:${{ github.run_number }} apps/nest-sendgrid
+
+    - name: Tag image as latest
+      run: docker tag ghcr.io/${{ github.repository_owner }}/api:${{ github.run_number }} ghcr.io/${{ github.repository_owner }}/api:latest
+
+    - name: Login & Push docker image on ghcr container registry
+      run: |
+        echo "${{ secrets.AVI_GITHUB_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+        docker push ghcr.io/${{ github.repository_owner }}/api:${{ github.run_number }}
+        docker push ghcr.io/${{ github.repository_owner }}/api:latest
+
+    - name: Scan docker image using Snyk
+      uses: snyk/actions/docker@master
+      continue-on-error: true
+      env:
+        SNYK_TOKEN: ${{ secrets.AVI_SYNKS_TOKEN }}
+      with:
+        image: ghcr.io/${{ github.repository_owner }}/api:${{ github.run_number }}
+        command: monitor
+
 
