@@ -21,6 +21,9 @@ COPY package.json ./
 # build stage
 # FROM develop-stage as build-stage
 RUN pnpm install
+
+ENV API=http://139.144.160.153:3000/
+
 COPY . .
 # RUN pnpm exec quasar --help
 RUN pnpm exec quasar build
