@@ -1,18 +1,57 @@
 {
   "name": "ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "dility.io frontend webapplication",
   "productName": "dility frontend application",
   "author": "avi.mehenwal@dility.io",
   "private": true,
   "scripts": {
     "dev": "quasar dev",
+    "release": "standard-version",
     "prod": "quasar build && python3 -m http.server --directory dist/spa 8080",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "ci:build": "docker build -t ghcr.io/dility/ui . && docker scan ghcr.io/dility/ui",
     "ci:serve": "docker run --rm -it -p 9000:80 ghcr.io/dility/ui",
     "format": "prettier --write \"**/*.{js,ts,vue,,html,md,json}\" --ignore-path .gitignore",
     "test": "echo \"No test specified\" && exit 0"
+  },
+  "standard-version": {
+    "types": [
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "chore",
+        "hidden": false
+      },
+      {
+        "type": "docs",
+        "hidden": false
+      },
+      {
+        "type": "style",
+        "hidden": false
+      },
+      {
+        "type": "refactor",
+        "hidden": false
+      },
+      {
+        "type": "perf",
+        "hidden": false
+      },
+      {
+        "type": "test",
+        "hidden": false
+      }
+    ],
+    "commitUrlFormat": "https://github.com/USERNAME/REPOSITORY_NAME/commits{{hash}}",
+    "compareUrlFormat": "https://github.com/USERNAME/REPOSITORY_NAME/compare/{{previousTag}}...{{currentTag}}"
   },
   "dependencies": {
     "@pnpm/make-dedicated-lockfile": "^0.3.21",
@@ -35,6 +74,7 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-vue": "^9.5.1",
     "prettier": "^2.7.1",
+    "standard-version": "^9.5.0",
     "typescript": "^4.8.3"
   },
   "engines": {
