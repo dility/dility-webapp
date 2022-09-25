@@ -17,6 +17,7 @@
   "dependencies": {
     "@pnpm/make-dedicated-lockfile": "^0.3.21",
     "@quasar/extras": "^1.15.3",
+    "axios": "^0.27.2",
     "postcss": "^8.4.16",
     "quasar": "^2.8.4",
     "vue": "^3.2.39",
@@ -29,6 +30,7 @@
     "@typescript-eslint/eslint-plugin": "^5.38.0",
     "@typescript-eslint/parser": "^5.38.0",
     "autoprefixer": "^10.4.12",
+    "dotenv": "^16.0.1",
     "eslint": "^8.23.1",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-vue": "^9.5.1",

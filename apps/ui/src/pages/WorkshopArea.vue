@@ -72,6 +72,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { useQuasar } from 'quasar'
+import { api } from 'boot/axios'
 
 const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 const tab = ref('participants')
@@ -121,6 +122,21 @@ const onSubmit = () => {
   }
   const newRows = rows.value?.push(newEntry)
   console.dir(newRows)
+
+  api.post('/mail/send-email', {}, { params: {
+    email: inputEmailText.value
+  }})
+    .then((response) => {
+      console.log(response)
+    })
+    .catch(() => {
+      $q.notify({
+        color: 'negative',
+        position: 'top',
+        message: 'Loading failed',
+        icon: 'report_problem'
+      })
+    })
 }
 
 const $q = useQuasar()
