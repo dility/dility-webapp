@@ -13,6 +13,9 @@
           <q-tab name="overview" label="overview" />
           <q-tab name="participants" label="participants" />
           <q-tab name="stakeholders" label="stakeholders" />
+          <q-tab name="agenda" label="agenda" />
+          <q-tab name="methods" label="methods" />
+          <q-tab name="qa" label="Q&A" />
         </q-tabs>
 
         <q-separator />
@@ -61,6 +64,18 @@
 
           <q-tab-panel name="stakeholders">
             <div class="text-h6">stakeholders</div>
+            {{ lorem }}
+          </q-tab-panel>
+          <q-tab-panel name="agenda">
+            <div class="text-h6">agenda</div>
+            {{ lorem }}
+          </q-tab-panel>
+          <q-tab-panel name="methods">
+            <div class="text-h6">methods</div>
+            {{ lorem }}
+          </q-tab-panel>
+          <q-tab-panel name="qa">
+            <div class="text-h6">qa</div>
             {{ lorem }}
           </q-tab-panel>
         </q-tab-panels>
