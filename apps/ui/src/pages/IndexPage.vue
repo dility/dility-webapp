@@ -11,54 +11,10 @@
 
   <h3>Home Page</h3>
 
+  <h6>Recently used workshops</h6>
+
   <div class="q-pa-md row items-start q-gutter-md">
-    <q-card class="my-card">
-      <q-card-section>
-        {{ lorem }}
-      </q-card-section>
-    </q-card>
-
-    <q-card class="my-card text-white" style="background: radial-gradient(circle, #35a2ff 0%, #014a88 100%)">
-      <q-card-section>
-        <div class="text-h6">Our Changing Planet</div>
-        <div class="text-subtitle2">by John Doe</div>
-      </q-card-section>
-
-      <q-card-section class="q-pt-none">
-        {{ lorem }}
-      </q-card-section>
-    </q-card>
-
-    <q-card dark bordered class="bg-grey-9 my-card">
-      <q-card-section>
-        <div class="text-h6">Our Changing Planet</div>
-        <div class="text-subtitle2">by John Doe</div>
-      </q-card-section>
-
-      <q-separator dark inset />
-
-      <q-card-section>
-        {{ lorem }}
-      </q-card-section>
-    </q-card>
-
-    <q-card flat bordered class="my-card">
-      <q-card-section>
-        <div class="text-h6">Our Changing Planet</div>
-      </q-card-section>
-
-      <q-card-section class="q-pt-none">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </q-card-section>
-
-      <q-separator inset />
-
-      <q-card-section>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </q-card-section>
-    </q-card>
+    <d-card v-for="index in 6" :key="index" title="Demo Workshop" :body1="body1" :body2="lorem" />
   </div>
 
   <h3>API</h3>
@@ -74,6 +30,7 @@ import { ref } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { api } from 'boot/axios'
 import { useQuasar } from 'quasar'
+import DCard from '../components/DCard.vue'
 
 const meta = ref<Meta>({
   totalCount: 1200,
@@ -99,6 +56,7 @@ function loadData() {
 }
 
 const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+const body1 = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt`
 </script>
 
 <style lang="sass" scoped>

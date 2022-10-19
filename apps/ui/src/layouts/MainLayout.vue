@@ -4,14 +4,14 @@
       <q-toolbar>
         <q-btn flat dense round icon="menu" aria-label="Menu" @click="toggleLeftDrawer" />
         <q-toolbar-title>{{ APP_NAME }}</q-toolbar-title>
-        <div>dev v0.0.1</div>
+        <div>user | notification</div>
       </q-toolbar>
     </q-header>
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
         <q-item class="justify-around">
-          <q-icon name="img:/assets/dility_logo_text_pink.svg" size="8em"/>
+          <q-icon name="img:/assets/dility_logo_text_pink.svg" size="8em" />
         </q-item>
 
         <q-item-label header>--workshop switcher radio here--</q-item-label>

@@ -35,3 +35,8 @@ pnpm --filter ui run dev
 - reliable E2E test on the top of pyramid is hard and maintenance nightmare
   - microfrontends
   - build time integration in monorepos, links 
+
+## UI Todos
+
+1. [ ] favicon
+2. [ ] 
