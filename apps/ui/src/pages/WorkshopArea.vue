@@ -23,11 +23,17 @@
         <q-tab-panels v-model="tab" animated>
           <q-tab-panel name="overview">
             <div class="text-h6">overview</div>
-            {{ lorem }}
+
+            <div class="q-pa-md row items-start q-gutter-md">
+              <d-card v-for="index in 2" :key="index" title="Demo Workshop" :body1="body1" :body2="lorem" />
+            </div>
           </q-tab-panel>
+
           <q-tab-panel name="participants">
-            <div class="row">
-              <h4>Participant Handling</h4>
+            <div>
+              <h5>Participant Handling</h5>
+              <p>Invite participants to the workshop. You can add people either directly from computer by typing theor
+                name or invite external people via email</p><br />
             </div>
             <q-form class="row q-col-gutter-xl" @submit.stop="onSubmit">
               <div class="col">
@@ -60,24 +66,38 @@
                 </template>
               </q-table>
             </div>
+            <div>
+              <h5>Schedule Invites</h5>
+              <p>Here you can schedule invites to the participants</p>
+            </div>
           </q-tab-panel>
 
           <q-tab-panel name="stakeholders">
             <div class="text-h6">stakeholders</div>
-            {{ lorem }}
+            <p>Add stakeholder</p>
+            <p>Stakeholder list</p>
           </q-tab-panel>
+
           <q-tab-panel name="agenda">
             <div class="text-h6">agenda</div>
-            {{ lorem }}
+            <div>help text</div>
+            <div>Add new agenda item</div>
+            <div>agenda list</div>
           </q-tab-panel>
+
           <q-tab-panel name="methods">
             <div class="text-h6">methods</div>
-            {{ lorem }}
+            <div>Selected Methods</div>
+            <div>List of all avilable methods</div>
           </q-tab-panel>
+
           <q-tab-panel name="qa">
             <div class="text-h6">qa</div>
-            {{ lorem }}
+            <div>search questions</div>
+            <div>Ask New questions</div>
+            <div>View all questions</div>
           </q-tab-panel>
+
         </q-tab-panels>
       </q-card>
     </div>
@@ -88,6 +108,8 @@
 import { ref } from 'vue';
 import { useQuasar } from 'quasar'
 import { api } from 'boot/axios'
+import DCard from '../components/DCard.vue'
+
 
 const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 const tab = ref('participants')
@@ -177,7 +199,7 @@ const deleteAttendee = (key) => {
   })
 }
 
-
+const body1 = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt`
 </script>
 
 <style lang="sass" scoped>
