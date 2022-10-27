@@ -9,12 +9,10 @@
     </q-breadcrumbs>
   </div>
 
-  <h3>Home Page</h3>
-
   <h6>Recently used workshops</h6>
 
   <div class="q-pa-md row items-start q-gutter-md">
-    <d-card v-for="index in 6" :key="index" title="Demo Workshop" :body1="body1" :body2="lorem" />
+    <d-card v-for="index in 3" :key="index" :title="index" :body1="body1" :body2="lorem" />
   </div>
 
   <h3>API</h3>
@@ -25,11 +23,10 @@
 </template>
 
 <script setup lang="ts">
-import { Todo, Meta } from 'components/models'
-import { ref } from 'vue'
-import { useI18n } from 'vue-i18n'
 import { api } from 'boot/axios'
+import { Meta } from 'components/models'
 import { useQuasar } from 'quasar'
+import { ref } from 'vue'
 import DCard from '../components/DCard.vue'
 
 const meta = ref<Meta>({
