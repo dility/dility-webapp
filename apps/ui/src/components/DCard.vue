@@ -22,7 +22,7 @@
     </q-card-section>
 
     <q-card-actions>
-      <q-btn unelevated outline rounded color="primary" label="Join" style="width: 48%" />
+      <d-button label="Join" style="width: 48%" />
       <q-btn unelevated rounded color="primary" label="Edit" style="width: 49%" />
     </q-card-actions>
 
@@ -30,6 +30,8 @@
 </template>
 
 <script setup lang="ts">
+import DButton from './DButton.vue'
+
 const props = defineProps({
   title: Number,
   body1: String,

@@ -38,7 +38,7 @@
             <q-form class="row q-col-gutter-xl" @submit.stop="onSubmit">
               <div class="col">
                 <q-input outlined v-model="inputEmailText" label="participant email Id"
-                  :rules="[ (val, rules) => rules.email(val) || 'Please enter a valid email address' ]">
+                  :rules="[(val, rules) => rules.email(val) || 'Please enter a valid email address']">
                   <template v-slot:append>
                     <q-icon name="close" @click="inputEmailText = null" class="cursor-pointer" />
                   </template>
@@ -86,9 +86,7 @@
           </q-tab-panel>
 
           <q-tab-panel name="methods">
-            <div class="text-h6">methods</div>
-            <div>Selected Methods</div>
-            <div>List of all avilable methods</div>
+            <d-methods />
           </q-tab-panel>
 
           <q-tab-panel name="qa">
@@ -109,7 +107,7 @@ import { ref } from 'vue';
 import { useQuasar } from 'quasar'
 import { api } from 'boot/axios'
 import DCard from '../components/DCard.vue'
-
+import DMethods from '../components/DMethods.vue'
 
 const lorem = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
 const tab = ref('participants')
