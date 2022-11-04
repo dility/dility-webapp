@@ -51,8 +51,6 @@
 
     </q-list>
   </div>
-
-
 </template>
 
 <script setup lang="ts">

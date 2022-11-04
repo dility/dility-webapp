@@ -11,7 +11,8 @@
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
         <q-item class="justify-around">
-          <q-icon name="img:/assets/dility_logo_text_pink.svg" size="8em" />
+          <!-- <q-icon name="img:/assets/dility_logo_text_pink.svg" size="8em" /> -->
+          <q-icon name="img:/icons/Logo-written.svg" size="12em" />
         </q-item>
 
         <q-item-label header>--workshop switcher radio here--</q-item-label>
