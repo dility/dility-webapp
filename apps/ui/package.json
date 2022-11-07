@@ -54,7 +54,7 @@
     "compareUrlFormat": "https://github.com/USERNAME/REPOSITORY_NAME/compare/{{previousTag}}...{{currentTag}}"
   },
   "dependencies": {
-    "@pnpm/make-dedicated-lockfile": "^0.3.21",
+    "@pnpm/make-dedicated-lockfile": "^0.4.0",
     "@quasar/extras": "^1.15.3",
     "axios": "^0.27.2",
     "postcss": "^8.4.16",
