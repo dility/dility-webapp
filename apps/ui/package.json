@@ -8,7 +8,8 @@
   "scripts": {
     "dev": "quasar dev",
     "release": "standard-version",
-    "prod": "quasar build && python3 -m http.server --directory dist/spa 8080",
+    "build": "quasar build",
+    "deploy": "vercel",
     "lint": "eslint --ext .js,.ts,.vue ./",
     "ci:build": "docker build -t ghcr.io/dility/ui . && docker scan ghcr.io/dility/ui",
     "ci:serve": "docker run --rm -it -p 9000:80 ghcr.io/dility/ui",
