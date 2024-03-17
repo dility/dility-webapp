@@ -41,7 +41,7 @@ RUN pnpm exec quasar build
 
 # Install NGINX, remove the default NGINX index.html file, and
 # copy the built static site files to the NGINX html directory.
-FROM nginx:stable-alpine
+FROM nginx:1.24-alpine3.17
 RUN mv /usr/share/nginx/html/index.html /usr/share/nginx/html/old-index.html
 COPY --from=builder /app/dist/spa /usr/share/nginx/html/
 ENV API=http://localhost:3000/
